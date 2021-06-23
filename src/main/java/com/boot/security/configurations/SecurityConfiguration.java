@@ -22,9 +22,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 
-		//authenticate by using spring security default schema
+		//fetch data directly users and authority script
+		//can use custom table and script too
 		auth.jdbcAuthentication()
-			.dataSource(dataSource);
+			.dataSource(dataSource)
+			.usersByUsernameQuery("SELECT username,password,enabled FROM users WHERE username =?")
+			.authoritiesByUsernameQuery("SELECT username,authority FROM authorities where username =? ");
 
 	}
 
