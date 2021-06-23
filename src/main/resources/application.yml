@@ -1,0 +1,8 @@
+spring:
+  datasource:
+    platform: postgresql
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:5432/student-management
+    username: postgres
+    password: root
+    type: com.zaxxer.hikari.HikariDataSource
