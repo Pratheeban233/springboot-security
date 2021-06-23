@@ -21,13 +21,11 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+
+		//authenticate by using spring security default schema
 		auth.jdbcAuthentication()
-			.dataSource(dataSource)
-			.withDefaultSchema()
-				.withUser(User.withUsername("admin").password("pass").roles("ADMIN"))
-				.withUser(User.withUsername("user").password("pass").roles("USER"));
-//			.usersByUsernameQuery("select * from users where username = ?"  )
-//			.authoritiesByUsernameQuery("select * from authorities where username = ?");
+			.dataSource(dataSource);
+
 	}
 
 	@Override
